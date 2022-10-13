@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "41960463953",
+    "project_id": "personaltodoforme",
+    "storage_bucket": "personaltodoforme.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41960463953:android:4ab19b264d305e68d0a270",
+        "android_client_info": {
+          "package_name": "com.example.takingnoteapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41960463953-3kgvpunkr70e9dp1vcp3qphq7f8t00at.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsQCvlMupMYkP3kO6RilFKdf9R4itHSwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41960463953-3kgvpunkr70e9dp1vcp3qphq7f8t00at.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "41960463953-5f9ilqin8beugfaacqt8m8gg8mirviel.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.notetakingapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
