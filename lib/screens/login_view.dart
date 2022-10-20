@@ -4,6 +4,8 @@ import 'dart:developer' as devtools show log;
 
 import 'package:takingnoteapp/constants/routes.dart';
 
+import '../utilities/show_error_dialog.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -65,14 +67,34 @@ class _LoginViewState extends State<LoginView> {
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case 'user-not-found':
-                    devtools.log('USER ERROR: ${e.code} ');
+                    await showErrorDialog(
+                      context,
+                      'User Not Found',
+                    );
                     break;
                   case 'wrong-password':
-                    devtools.log('PASSWORD ERROR: ${e.code}');
+                    await showErrorDialog(
+                      context,
+                      'Wrong Password Credentails',
+                    );
+                    break;
+                  case 'invalid-email':
+                    await showErrorDialog(
+                      context,
+                      'Invalid Email Entered',
+                    );
                     break;
                   default:
-                    devtools.log('OTHER ERROR: ${e.code}');
+                    await showErrorDialog(
+                      context,
+                      'ERROR: ${e.code}',
+                    );
                 }
+              } catch (e) {
+                await showErrorDialog(
+                  context,
+                  'UNKNOWN ERROR: ${e.toString()}',
+                );
               }
             },
             child: const Text('Login'),
