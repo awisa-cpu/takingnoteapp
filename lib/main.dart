@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:takingnoteapp/constants/routes.dart';
 import 'package:takingnoteapp/screens/login_view.dart';
 import 'package:takingnoteapp/screens/register_View.dart';
 
@@ -16,9 +17,9 @@ void main() {
     ),
     home: const HomePage(),
     routes: {
-      '/register/': (context) => const RegisterView(),
-      '/login/': (context) => const LoginView(),
-      '/noteview/': (context) => const NoteView(),
+      register: (context) => const RegisterView(),
+      login: (context) => const LoginView(),
+      noteView: (context) => const NoteView(),
     },
   ));
 }
