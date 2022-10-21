@@ -20,6 +20,7 @@ void main() {
       register: (context) => const RegisterView(),
       login: (context) => const LoginView(),
       noteView: (context) => const NoteView(),
+      verifyEmailView: (context) => const VerifyEmailView(),
     },
   ));
 }

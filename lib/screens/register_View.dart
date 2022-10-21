@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtools show log;
 
 import 'package:takingnoteapp/constants/routes.dart';
 import 'package:takingnoteapp/utilities/show_error_dialog.dart';
@@ -56,10 +55,11 @@ class _RegisterViewState extends State<RegisterView> {
               final password = _password.text;
 
               try {
-                final userCredential = await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                        email: email, password: password);
-                devtools.log(userCredential.toString());
+                await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    email: email, password: password);
+                final currentUser = FirebaseAuth.instance.currentUser;
+                await currentUser?.sendEmailVerification();
+                Navigator.of(context).pushNamed(verifyEmailView);
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case 'email-already-in-use':

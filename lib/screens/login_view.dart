@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtools show log;
 
 import 'package:takingnoteapp/constants/routes.dart';
 
@@ -60,10 +59,19 @@ class _LoginViewState extends State<LoginView> {
                   email: email,
                   password: password,
                 );
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  noteView,
-                  (route) => false,
-                );
+
+                final currentUser = FirebaseAuth.instance.currentUser;
+                if (currentUser?.emailVerified ?? false) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    noteView,
+                    (route) => false,
+                  );
+                } else {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    verifyEmailView,
+                    (route) => false,
+                  );
+                }
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case 'user-not-found':
